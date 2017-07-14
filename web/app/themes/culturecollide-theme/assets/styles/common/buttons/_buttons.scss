@@ -1,0 +1,27 @@
+.button {
+  padding: 12px 0 15px;
+  display: block;
+  width: 193px;
+  height: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  &.button--outline {
+    border: $black solid 2px;
+  }
+  &.button--white {
+    border: none;
+  }
+
+  &.button--small {
+    font-size: .875rem;
+    padding: 3px 0 8px;
+    height: 30px;
+  }
+}
+
+.navbar-toggler {
+  font-size: 2rem;
+  color: $white;
+}

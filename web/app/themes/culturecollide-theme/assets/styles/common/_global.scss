@@ -1,0 +1,47 @@
+body,
+button,
+input,
+select,
+textarea {
+	color: $color__text-main;
+	font-family: $font__main;
+	font-size: $font-size;
+	line-height: $font__line-height-body;
+  background-color: $color__background;
+  color: $color__text-main;
+}
+
+.row {
+  &.cc-row {
+    padding: 0 15px;
+  }
+}
+
+.test-background {
+  background: $color__test;
+}
+
+.ad {
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+a {
+  color: $color__link;
+  &:link, &:visited {
+    color: $color__link;
+  }
+  &:hover, &:active {
+    color: $color__link--active;
+    text-decoration: none;
+  }
+}
+
+.block__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+}
