@@ -48,6 +48,7 @@
       "url": "https://github.com/pandabrand/cc-plugin.git"
     }
   ],
+  "minimum-stability": "stable",
   "require": {
     "php": ">=5.6",
     "composer/installers": "~1.2.0",
