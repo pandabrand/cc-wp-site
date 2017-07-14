@@ -26,7 +26,7 @@ set :pty, true
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/app/uploads')
 
-set :composer_install_flags, '--no-interaction --quiet --optimize-autoloader'
+set :composer_install_flags, '--no-interaction --optimize-autoloader'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
