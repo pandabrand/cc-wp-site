@@ -58,10 +58,10 @@
     "elliotcondon/advanced-custom-fields-pro":"*",
     "soflyy/wpai-acf-add-on":"*",
     "soflyy/wp-all-import-pro":"*",
-    "wpackagist-plugin/bulk-delete": "dev-trunk",
-    "wpackagist-plugin/import-external-attachments": "dev-trunk",
-    "wpackagist-plugin/regenerate-thumbnails": "dev-trunk",
-    "pandabrand/cc-plugin":"dev-master"
+    "wpackagist-plugin/bulk-delete": "*",
+    "wpackagist-plugin/import-external-attachments": "*",
+    "wpackagist-plugin/regenerate-thumbnails": "*",
+    "pandabrand/cc-plugin":"*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1"
