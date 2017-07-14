@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "162275b7202de3a100c997c620db6b35",
+    "content-hash": "4025cf1f2545ea36c367900bebc333d7",
     "packages": [
         {
             "name": "composer/installers",
@@ -478,15 +478,15 @@
         },
         {
             "name": "wpackagist-plugin/bulk-delete",
-            "version": "dev-trunk",
+            "version": "5.5.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/bulk-delete/",
-                "reference": "trunk"
+                "reference": "tags/5.5.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/bulk-delete.zip?timestamp=1499343786",
+                "url": "https://downloads.wordpress.org/plugin/bulk-delete.5.5.6.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -494,20 +494,19 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/bulk-delete/",
-            "time": "2017-07-06T13:23:06+00:00"
+            "homepage": "https://wordpress.org/plugins/bulk-delete/"
         },
         {
             "name": "wpackagist-plugin/import-external-attachments",
-            "version": "dev-trunk",
+            "version": "1.5.12",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/import-external-attachments/",
-                "reference": "trunk"
+                "reference": "tags/1.5.12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/import-external-attachments.zip?timestamp=1487947186",
+                "url": "https://downloads.wordpress.org/plugin/import-external-attachments.1.5.12.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -515,20 +514,19 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/import-external-attachments/",
-            "time": "2017-02-24T14:39:46+00:00"
+            "homepage": "https://wordpress.org/plugins/import-external-attachments/"
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",
-            "version": "dev-trunk",
+            "version": "2.2.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/regenerate-thumbnails/",
-                "reference": "trunk"
+                "reference": "tags/2.2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.zip?timestamp=1469752873",
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.2.2.6.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -536,8 +534,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/",
-            "time": "2016-07-29T01:41:13+00:00"
+            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
         }
     ],
     "packages-dev": [
@@ -623,9 +620,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wpackagist-plugin/bulk-delete": 20,
-        "wpackagist-plugin/import-external-attachments": 20,
-        "wpackagist-plugin/regenerate-thumbnails": 20,
         "pandabrand/cc-plugin": 20
     },
     "prefer-stable": false,
