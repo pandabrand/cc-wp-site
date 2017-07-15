@@ -24,6 +24,8 @@ GEM
     sshkit (1.14.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    wordpress-capistrano (0.5.0)
+      capistrano (~> 3.0)
 
 PLATFORMS
   ruby
@@ -34,6 +36,7 @@ DEPENDENCIES
   capistrano-composer
   capistrano-gulp
   capistrano-npm
+  wordpress-capistrano
 
 BUNDLED WITH
    1.15.1

@@ -8,6 +8,7 @@ require "capistrano/composer"
 require "capistrano/npm"
 require "capistrano/bower"
 require "capistrano/gulp"
+require 'capistrano/wordpress'
 
 # Load the SCM plugin appropriate to your project:
 #

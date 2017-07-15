@@ -21,9 +21,11 @@ set :log_level, :info
 # Default value for :pty is false
 set :pty, true
 
-set :npm_target_path, "#{release_path}/app/themes/culturecollide-theme"
-set :bower_target_path, "#{release_path}/app/themes/culturecollide-theme"
-set :gulp_target_path, "#{release_path}/app/themes/culturecollide-theme"
+set :npm_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
+set :bower_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
+set :gulp_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
+set :wp_uploads, "/var/www/vhosts/culturecollide.com/#{fetch(:application)}/shared/web/app/uploads
+"
 
 set :gulp_tasks, 'sprite build'
 
