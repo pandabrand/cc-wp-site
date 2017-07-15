@@ -17,17 +17,20 @@ set :tmp_dir, "/var/www/vhosts/culturecollide.com/#{fetch(:application)}/tmp"
 # These are the defaults.
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
-set :log_level, :info
+set :log_level, :debug
 # Default value for :pty is false
 set :pty, true
 
 set :npm_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
 set :bower_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
 set :gulp_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
-set :wp_uploads, "/var/www/vhosts/culturecollide.com/#{fetch(:application)}/shared/web/app/uploads
-"
+set :wp_uploads, "web/app/uploads"
+set :wp_path, "web/wp"
+set :local_url, "192.168.50.5"
+# set :wp, "/usr/local/bin/wp"
 
-set :gulp_tasks, 'sprite build'
+set :gulp_tasks, 'sprite build --production'
+set :gulp_file, "#{release_path}/web/app/themes/culturecollide-theme/gulpfile.js"
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('.env', 'web/.htaccess')
@@ -81,4 +84,8 @@ namespace :deploy do
       end
     end
   end
+end
+
+namespace :deploy do
+  before :updated, 'gulp'
 end
