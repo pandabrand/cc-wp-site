@@ -6,7 +6,6 @@
   $ad_query = new WP_Query($args);
   if($ad_query->have_posts()):
 ?>
-<div class="col-sm-12 col-md-4 push-md-8 col-lg-3 push-lg-9">
   <div class="ad">
     <a href="<?php echo get_field(''); ?>" target="_blank" rel="external">
       <img src="<?php echo the_post_thumbnail_url('ad-space-image'); ?>" class="img-fluid" height="100%"/>

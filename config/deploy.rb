@@ -17,24 +17,24 @@ set :tmp_dir, "/var/www/vhosts/culturecollide.com/#{fetch(:application)}/tmp"
 # These are the defaults.
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
-set :log_level, :debug
+set :log_level, :info
 # Default value for :pty is false
 set :pty, true
 
-set :npm_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
-set :bower_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
-set :gulp_target_path, "#{release_path}/web/app/themes/culturecollide-theme"
+set :npm_target_path, -> { release_path.join('web/app/themes/culturecollide-theme') }
+set :npm_flags, ''
+set :bower_target_path, -> { release_path.join('web/app/themes/culturecollide-theme') }
 set :wp_uploads, "web/app/uploads"
 set :wp_path, "web/wp"
-set :local_url, "192.168.50.5"
-# set :wp, "/usr/local/bin/wp"
 
-set :gulp_tasks, 'sprite build --production'
-set :gulp_file, "#{release_path}/web/app/themes/culturecollide-theme/gulpfile.js"
+set :gulp_tasks, 'build'
+set :gulp_flags, '--production --no-color'
+set :gulp_file, -> { release_path.join('web/app/themes/culturecollide-theme/gulpfile.js') }
+# set :gulp_file, "#{release_path}/web/app/themes/culturecollide-theme/gulpfile.js"
 
 # Default value for :linked_files is []
 # set :linked_files, fetch(:linked_files, []).push('.env', 'web/.htaccess')
-set :linked_files, fetch(:linked_files, []).push('.env')
+set :linked_files, fetch(:linked_files, []).push('.env', 'web/.htaccess')
 set :linked_dirs, fetch(:linked_dirs, []).push('web/app/uploads')
 
 set :composer_install_flags, '--no-interaction --optimize-autoloader --ignore-platform-reqs'
@@ -87,5 +87,6 @@ namespace :deploy do
 end
 
 namespace :deploy do
+  # after :publishing, 'gulp'
   before :updated, 'gulp'
 end

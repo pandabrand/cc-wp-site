@@ -102,5 +102,5 @@ function get_card_excerpt($post = null) {
   if (preg_match('/^.{1,60}\b/s', $excerpt, $match)) {
       $line=$match[0];
   }
-  return $line.'...';
+  return strip_tags($line.'...');
 }
