@@ -23,7 +23,7 @@ $card__border__color:  $white;
     position: absolute;
     height:89%;
     top: 11%;
-    left: 12%;
+    left: 10%;
   }
   .card__body {
     position: absolute;
@@ -74,7 +74,7 @@ $card__border__color:  $white;
   }
   &.card__1-1 {
     .card__category-line {
-      left: 17%;
+      left: 14%;
     }
   }
   &.card__2-1 {
@@ -82,7 +82,7 @@ $card__border__color:  $white;
       width: 100%;
     }
     .card__category-line {
-      left: 11%;
+      left: 10%;
     }
   }
   &.card__3-1 {
@@ -90,7 +90,7 @@ $card__border__color:  $white;
       width: 100%;
     }
     .card__category-line {
-      left: 14%;
+      left: 12%;
     }
   }
 }

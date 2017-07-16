@@ -1,15 +1,25 @@
 <?php while (have_posts()) : the_post(); ?>
-  <article <?php post_class(); ?>>
-    <header>
-      <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php get_template_part('templates/entry-meta'); ?>
-    </header>
-    <div class="entry-content">
-      <?php the_content(); ?>
+  <div class="row cc-row editorial_header">
+    <div class="col-12">
+      <?php get_template_part('layouts/editorial', 'header'); ?>
     </div>
-    <footer>
-      <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
-    </footer>
-    <?php comments_template('/templates/comments.php'); ?>
-  </article>
+  </div>
+  <div class="row cc-row justify-content-center editorial__detail__article">
+    <div class="col-11">
+      <main>
+        <article <?php post_class(); ?>>
+          <div class="editorial__detail__feature_media">
+            <?php if(get_field('background-image')): ?>
+              <img src="<?php echo the_post_thumbnail_url('large-feature'); ?>" class="img-fluid" />
+            <?php endif; ?>
+          </div>
+          <div class="row">
+            <div class="editorial__detail__article__copy col-8 offset-2">
+              <?php the_content(); ?>
+            </div>
+          </div>
+        </article>
+      </main>
+    </div>
+  </div>
 <?php endwhile; ?>

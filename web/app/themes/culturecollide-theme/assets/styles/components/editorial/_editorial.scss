@@ -113,6 +113,7 @@
     background-position: top;
     transition: all .17s;
     margin: 0;
+    background-color: $black;
   }
   .billboard__filter {
 
@@ -131,7 +132,7 @@
   .billboard__body {
     margin: 6rem;
     margin-top: -35rem;
-    padding: 10px;
+    padding: 1rem;
     &.travel__detail__body {
       left: 8.5%;
       width: 83%;
@@ -169,7 +170,7 @@
   .billboard__category-block {
     position: absolute;
     top: 8%;
-    left: 9.5%;
+    left: 6.5%;
     display: flex;
     .billboard__category-block__category-image {
     }
