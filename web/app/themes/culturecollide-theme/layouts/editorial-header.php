@@ -1,6 +1,6 @@
-<div class="editorial__detail__header billboard">
-  <?php if(get_field('background-image')): ?>
-    <div class="billboard__image" style="background-image:url('<?php echo wp_get_attachment_image_src(get_field('background-image')); ?>')"></div>
+<div class="editorial__detail__header <?php add_billboard_class(); ?>">
+  <?php $image  = get_field('background_image'); if($image): ?>
+    <div class="billboard__image" style="background-image:url('<?php echo $image['sizes']['large-feature']; ?>')"></div>
   <?php else: ?>
     <div class="billboard__image" style="background-image:url('<?php echo the_post_thumbnail_url('large-feature'); ?>')"></div>  <?php endif; ?>
   <div class="billboard__category-line"></div>

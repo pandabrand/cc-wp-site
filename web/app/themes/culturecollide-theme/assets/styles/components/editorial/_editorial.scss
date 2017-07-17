@@ -44,11 +44,17 @@
       font-weight: 600;
       padding-right: 2rem;
     }
-    .editorial_img-left {
+    .editorial_img-left, .alignleft {
       float: left;
       vertical-align: text-top;
       margin-left: -15rem;
       margin-right: 3rem;
+    }
+    .editorial_img-right, .alignright {
+      // float: right;
+      vertical-align: text-top;
+      margin-right: -15rem;
+      margin-left: 3rem;
     }
     .editorial_img-left--caption {
       float: left;

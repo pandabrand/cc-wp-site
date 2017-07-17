@@ -126,3 +126,11 @@ function get_social_links($post = null) {
 
   return $shares;
 }
+
+function add_billboard_class() {
+  $billboard_class = 'billboard';
+  if(get_field('show_alternate_editorial_layout')) {
+    $billboard_class = 'billboard-two';
+  }
+ echo $billboard_class;
+}
