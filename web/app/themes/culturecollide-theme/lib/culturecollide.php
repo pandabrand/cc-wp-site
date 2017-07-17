@@ -120,7 +120,7 @@ function get_social_links($post = null) {
 
   $shares = [];
   //facebook share url
-  $shares['facebook'] = urlencode(get_the_permalink());
+  $shares['facebook'] = get_the_permalink();
   $shares['twitter'] = 'https://twitter.com/intent/tweet?text='.urlencode(get_the_title()).'&url='.urlencode(get_the_permalink());
   $shares['tumblr'] = 'http://www.tumblr.com/widgets/share/tool?canonicalUrl='.urlencode(get_the_permalink());
 
