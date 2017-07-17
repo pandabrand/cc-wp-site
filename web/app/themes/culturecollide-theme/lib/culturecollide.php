@@ -69,6 +69,12 @@ function get_category_type_subject($post = null) {
   $subject = '';
   if($post->post_type == 'artist' || $post->post_type == 'city') {
     $subject = $post->post_title;
+  } else {
+    $tag_terms = wp_get_post_terms($post->ID);
+    if(!empty($tag_terms)) {
+      $first_term = $tag_terms[0];
+      $subject = $first_term->name;
+    }
   }
   return $subject;
 }
@@ -103,4 +109,20 @@ function get_card_excerpt($post = null) {
       $line=$match[0];
   }
   return strip_tags($line.'...');
+}
+
+function get_social_links($post = null) {
+  if( empty( $post ) ) {
+    global $post;
+  } else {
+    $post = get_post($post);
+  }
+
+  $shares = [];
+  //facebook share url
+  $shares['facebook'] = urlencode(get_the_permalink());
+  $shares['twitter'] = 'https://twitter.com/intent/tweet?text='.urlencode(get_the_title()).'&url='.urlencode(get_the_permalink());
+  $shares['tumblr'] = 'http://www.tumblr.com/widgets/share/tool?canonicalUrl='.urlencode(get_the_permalink());
+
+  return $shares;
 }

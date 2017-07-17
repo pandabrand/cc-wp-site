@@ -62,7 +62,8 @@
     "wpackagist-plugin/bulk-delete": "*",
     "wpackagist-plugin/import-external-attachments": "*",
     "wpackagist-plugin/regenerate-thumbnails": "*",
-    "pandabrand/cc-plugin":"dev-master"
+    "pandabrand/cc-plugin":"dev-master",
+    "yoast/wordpress-seo":"*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1"

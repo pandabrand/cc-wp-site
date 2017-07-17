@@ -22,4 +22,5 @@
       </main>
     </div>
   </div>
+  <?php get_template_part('templates/content', 'editorial-share-bar'); ?>
 <?php endwhile; ?>

@@ -30,17 +30,17 @@
     share
     <ul class="billboard__social-block__list">
       <li class="billboard__social-block__item">
-        <a href="https:twitter.com" target="_blank">
+        <a class="share-tw" rel="external" href="<?php echo get_social_links()['twitter']; ?>" target="_blank">
           <i class="fa fa-twitter"></i>
         </a>
       </li>
       <li class="billboard__social-block__item">
-        <a href="https:facebook.com" target="_blank">
+        <a class="share-fb" rel="external" href="<?php echo get_social_links()['facebook']; ?>">
           <i class="fa fa-facebook"></i>
         </a>
       </li>
       <li class="billboard__social-block__item">
-        <a href="https:tumblr.com" target="_blank">
+        <a class="share-tb" href="<?php echo get_social_links()['tumblr']; ?>">
           <i class="fa fa-tumblr"></i>
         </a>
       </li>
