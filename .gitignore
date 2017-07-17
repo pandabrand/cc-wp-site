@@ -20,3 +20,4 @@ vendor/*
 !vendor/.gitkeep
 
 log
+web/app/debug.log
