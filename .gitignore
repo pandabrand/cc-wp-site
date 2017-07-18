@@ -22,4 +22,4 @@ vendor/*
 log
 web/app/debug.log
 
-.DS_Store
+**/.DS_Store
