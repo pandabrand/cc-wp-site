@@ -87,16 +87,19 @@ function get_card_title($post = null) {
   }
 
   $title = '';
-  if($post->post_type == 'post') {
+  if( $post->post_type == 'post' ) {
     $title = $post->post_title;
   } else {
-    get_field('excerpt_title', $post->ID);
+    $title = get_field( 'excerpt_title', $post->ID );
   }
 
+  if ( empty ( $title ) ) {
+    $title = get_the_title( $post );
+  }
   return $title;
 }
 
-function get_card_excerpt($post = null) {
+function get_card_excerpt($post = null, $length = '60') {
   if ( empty( $post )  ) {
     global $post;
   } else {
@@ -105,7 +108,7 @@ function get_card_excerpt($post = null) {
 
   $excerpt = get_the_excerpt();
   $line=$excerpt;
-  if (preg_match('/^.{1,60}\b/s', $excerpt, $match)) {
+  if (preg_match('/^.{1,'.$length.'}\b/s', $excerpt, $match)) {
       $line=$match[0];
   }
   return strip_tags($line.'...');
@@ -133,4 +136,16 @@ function add_billboard_class() {
     $billboard_class = 'billboard-two';
   }
  echo $billboard_class;
+}
+
+function debug_var($var) {
+  $var_dump = '';
+   if(isset($var)) {
+      $var_dump .= "<pre>";
+      $var_dump .= var_dump($var);
+      $var_dump .= "</pre>";
+   } else {
+      $var_dump .= "Variable doesn't exist!";
+   }
+   return $var_dump;
 }
