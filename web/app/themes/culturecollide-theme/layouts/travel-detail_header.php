@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="billboard__text travel__detail__text">
-      <?php the_content(); ?>
+      <?php (get_post_type() == 'artist') ? the_content() : the_excerpt(); ?>
     </div>
     <div class="billboard__category-block">
       <div class="<?php echo get_post_icon_class(); ?>"></div>
@@ -20,7 +20,13 @@
           city guide:
         </div>
         <div class="billboard__category-block__category-info">
-          <?php $city = get_field('artist_city')[0]; echo $city->post_title; ?>
+          <?php
+            if( get_post_type() == 'artist' ):
+              $city = get_field('artist_city')[0]; echo $city->post_title;
+            else:
+              echo get_the_title();
+            endif;
+          ?>
         </div>
       </div>
     </div>

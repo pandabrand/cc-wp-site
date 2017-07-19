@@ -21,14 +21,68 @@ function load_map_data() {
         'title' => get_the_title($related_city->ID),
         'location' => get_field('city_location', $related_city->ID)
       );
-      $map_info = array(
-        'api_key' => MAPBOX_API,
+      $json_locations['city'] = $city;
+    } elseif ( get_post_type() == 'city' ) {
+      $locations = get_posts(array(
+        "numberposts" => -1,
+        "post_type" => "location",
+        "meta_query" => array(
+          array(
+            'key' => 'location_city',
+            'compare' => 'LIKE',
+            'value' => $post->ID
+          ),
+        )
+      ));
+      if( !empty( $locations ) ) {
+        foreach($locations as $location) {
+          $location_output = array(
+            'location_id' => $location->ID,
+            'title' => get_the_title($location->ID),
+            'website' => get_field('website', $location->ID),
+            'coords' => get_field('address', $location->ID)
+          );
+          $json_locations['locations'][] = $location_output;
+        }
+      }
+      $city = array(
+        'title' => get_the_title($post->ID),
+        'location' => get_field('city_location', $post->ID)
       );
       $json_locations['city'] = $city;
-      $json_locations['map_info'] = $map_info;
-    } elseif ( get_post_type() == 'city' ) {
-      $locations = get_field('locations');
+    } elseif( is_tax('location_types')  ) {
+      $term_id = get_queried_object_id();
+      $term = get_term($term_id);
+      $locations = get_posts(array(
+        "post_type" => "location",
+        "numberposts" => -1,
+        $term->taxonomy => $term->name
+      ));
+      if( !empty( $locations ) ) {
+        foreach($locations as $location) {
+          $location_output = array(
+            'location_id' => $location->ID,
+            'title' => get_the_title($location->ID),
+            'website' => get_field('website', $location->ID),
+            'coords' => get_field('address', $location->ID)
+          );
+          $json_locations['locations'][] = $location_output;
+        }
+        $first = get_field('location_city', $locations[0]->ID);
+        write_log($first);
+        $city = get_post($first[0]);
+        write_log($city);
+        $city = array(
+          'title' => get_the_title($city->ID),
+          'location' => get_field('city_location', $city->ID)
+        );
+        $json_locations['city'] = $city;
+      }
     }
+    $map_info = array(
+      'api_key' => MAPBOX_API,
+    );
+    $json_locations['map_info'] = $map_info;
     $js_data = json_encode($json_locations);
     wp_register_script('map_js', get_template_directory_uri() . '/dist/scripts/map_data.js', array(), null, true);
     wp_localize_script( 'map_js', 'map_vars', $js_data );

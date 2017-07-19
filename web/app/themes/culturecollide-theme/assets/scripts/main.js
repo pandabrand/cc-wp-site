@@ -70,6 +70,17 @@
           event.preventDefault();
           makepopup($(this));
         });
+
+        // var travel__navigation = $('.travel__navigation');
+        // $('travel__navigation').ready(function() {
+        //   new Waypoint.Sticky({ element: this[0] },{ offset: '3%' });
+        // });
+        // console.log(travel__navigation);
+        // if(travel__navigation.length) {
+        //   new Waypoint.Sticky({ element: travel__navigation[0] },{ offset: '3%' });
+        // }
+
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -257,84 +268,209 @@
           });
         });
       });
-     },
-     finalize: function() {
-      // mapoverlay = new google.maps.OverlayView();
-      // mapoverlay.draw = function () {
-      //   this.getPanes().markerLayer.id='markerLayer';
-      // };
-      // mapoverlay.setMap(map);
-      //
-      // var ccIcon = {
-      //     url: '/app/themes/culturecollide-theme/dist/images/map_icon@2x.png',
-      //     //state your size parameters in terms of pixels
-      //     size: new google.maps.Size(68, 100),
-      //     scaledSize: new google.maps.Size(34, 50),
-      //     origin: new google.maps.Point(0,0)
-      // };
-      //
-      //  parsed_map_vars.locations.forEach(function(feature, index) {
-      //    console.dir(feature.location_id);
-      //    var marker = new google.maps.Marker({
-      //      map: map,
-      //      position: new google.maps.LatLng(feature.coords.lat, feature.coords.lng),
-      //      icon: ccIcon,
-      //     //  content: '<div class="cc-map-marker '+feature.id+'"><img class="img-fluid" src="../images/map_icon.png" srcset="../images/map_icon.png 1x, ../images/map_icon@2x.png 2x" /></div>',
-      //     //  anchor: RichMarkerPosition.MIDDLE,
-      //      optimized: false,
-      //      draggable: false,
-      //      title: feature.location_id.toString(),
-      //      id: feature.location_id.toString(),
-      //    });
-      //    marker.setZIndex(index++);
-      //    markers[feature.location_id] = marker;
-      //    google.maps.event.addListener(marker, 'click', scrollToDetail);
-      //  });
-      //  google.maps.event.addListenerOnce(map, 'idle', loadMarker);
-      //
-      //  $('.travel__detail__map__item').each(function(i, classname) {
-      //    var $elements = $(classname)
-      //
-      //    $elements.each(function() {
-      //      new Waypoint({
-      //        element: this,
-      //        handler: function(direction) {
-      //          var previousWaypoint = this.previous()
-      //          var nextWaypoint = this.next()
-      //          $elements.removeClass('np-previous np-current np-next')
-      //
-      //          if (previousWaypoint && direction === 'down') {
-      //            var _prevId = $(previousWaypoint.element).attr('id')
-      //            var _prevMarkerEl = $('.cc-map-marker.'+_prevId);
-      //            var _prevMarker = markers[Number.parseInt(_prevId)];
-      //            removeIconDetails(_prevMarkerEl, _prevMarker)
-      //            $(previousWaypoint.element).addClass('np-previous')
-      //          }
-      //
-      //          $(this.element).addClass('np-current')
-      //          var _id = $(this.element).attr('id')
-      //          var _markerEl = $('.cc-map-marker.'+_id);
-      //          var _marker = markers[Number.parseInt(_id)];
-      //          showIconDetails(_markerEl, _marker);
-      //          map.panTo(_marker.getPosition());
-      //
-      //          if (nextWaypoint && direction === 'up') {
-      //            $(nextWaypoint.element).addClass('np-next')
-      //            var _nextId = $(nextWaypoint.element).attr('id')
-      //            var _nextMarkerEl = $('.cc-map-marker.'+_nextId);
-      //            var _nextMarker = markers[Number.parseInt(_nextId)];
-      //            removeIconDetails(_nextMarkerEl, _nextMarker)
-      //          }
-      //
-      //        },
-      //        offset: -10,
-      //        group: classname,
-      //        context: $('.travel__detail__map__list')[0]
-      //      })
-      //    })
-      //  });
      }
+   },
+   'city_template_default': {
+     init: function() {
+       var map, mapoverlay, parsed_map_vars, markers;
+       var pulseElement = document.createElement('div');
+       pulseElement.classList.add('element');
+       var thatMarker;
+
+       showIconDetails = function(markerElement, thisMarker) {
+         thatMarker = thisMarker;
+         // thisMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+         $(markerElement).find('.cc-map-marker').addClass('img-icon-anim');
+         $(markerElement).find('.cc-map-marker').append(pulseElement);
+       };
+
+       removeIconDetails = function(markerElement, thisMarker) {
+         // thisMarker.setZIndex(thatMarker.getZIndex());
+         $(markerElement).find('.cc-map-marker').removeClass('img-icon-anim');
+         $(markerElement).find('.cc-map-marker').children('.element').remove();
+       }
+
+       parsed_map_vars = JSON.parse(map_vars);
+
+       var ccIcon = L.divIcon({
+           html: '<div class="cc-map-marker"><img class="img-fluid" src="/app/themes/culturecollide-theme/dist/images/map_icon.png" srcset="/app/themes/culturecollide-theme/dist/images/map_icon.png 1x, /app/themes/culturecollide-theme/dist/images/map_icon@2x.png 2x" /></div>',
+       });
+       $('#cc-map').ready(function() {
+         map = L.map('cc-map',{scrollWheelZoom:false}).setView([parsed_map_vars.city.location.lat, parsed_map_vars.city.location.lng], 14);
+
+         var mbURL = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=',
+         mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+         L.tileLayer(mbURL + parsed_map_vars.map_info.api_key, {id: 'mapbox.light', attribution: mbAttr}).addTo(map);
+         markers = L.layerGroup();
+         for(var x = 0; x < parsed_map_vars.locations.length; x++) {
+           var feature = parsed_map_vars.locations[x];
+           var marker_place = L.marker([feature.coords.lat, feature.coords.lng],{icon:ccIcon, riseOnHover:true});
+           markers.addLayer(marker_place);
+           feature.marker_id = markers.getLayerId(marker_place);
+           $('#'+feature.location_id).attr('data-cc-marker', feature.marker_id);
+           $('#'+feature.location_id).addClass(feature.marker_id);
+           marker_place.on('click', scrollToDetail);
+         }
+         markers.addTo(map);
+       });
+
+     scrollToDetail = function() {
+       console.log(this._icon);
+       Waypoint.disableAll();
+       var _id = this._leaflet_id;
+       var scrollItem = $('[data-cc-marker="'+_id+'"]');
+       var container = $('.travel__detail__map__list');
+       $('*').removeClass('img-icon-anim');
+       loadMarker(_id);
+       container.animate({
+         scrollTop: scrollItem.offset().top - container.offset().top + container.scrollTop()
+       }, 2000, function() {
+         Waypoint.enableAll();
+       });
+     };
+     $.each(['.travel__detail__map__item'], function(i, classname) {
+       var $elements = $(classname);
+       $elements.each(function() {
+         new Waypoint({
+           element: this,
+           handler: function(direction) {
+             var previousWaypoint = this.previous();
+             var nextWaypoint = this.next();
+             $elements.removeClass('np-previous np-current np-next');
+
+             if (previousWaypoint && direction === 'down') {
+               var _prevId = $(previousWaypoint.element).attr('data-cc-marker');
+               var _prevMarker = markers.getLayer(_prevId);
+              //  var _prevMarker = markers[Number.parseInt(_prevId)];
+              //  removeIconDetails(_prevMarkerEl, _prevMarker)
+               $(previousWaypoint.element).addClass('np-previous');
+             }
+
+             $(this.element).addClass('np-current')
+             var _id = $(this.element).attr('data-cc-marker');
+             var _marker = markers.getLayer(_id);
+             var _markerEl = $(_marker._icon);
+             showIconDetails(_markerEl, _marker);
+             map.flyTo(_marker.getLatLng());
+
+             if (nextWaypoint && direction === 'up') {
+               $(nextWaypoint.element).addClass('np-next');
+               var _nextId = $(nextWaypoint.element).attr('data-cc-marker');
+              //  var _nextMarkerEl = $('.cc-map-marker.'+_nextId);
+              //  var _nextMarker = markers[Number.parseInt(_nextId)];
+              //  removeIconDetails(_nextMarkerEl, _nextMarker)
+             }
+
+           },
+           offset: -10,
+           group: classname,
+           context: $('.travel__detail__map__list')[0]
+         });
+       });
+     });
     }
+  },
+   'tax_location_types': {
+     init: function() {
+       var map, mapoverlay, parsed_map_vars, markers;
+       var pulseElement = document.createElement('div');
+       pulseElement.classList.add('element');
+       var thatMarker;
+
+       showIconDetails = function(markerElement, thisMarker) {
+         thatMarker = thisMarker;
+         // thisMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+         $(markerElement).find('.cc-map-marker').addClass('img-icon-anim');
+         $(markerElement).find('.cc-map-marker').append(pulseElement);
+       };
+
+       removeIconDetails = function(markerElement, thisMarker) {
+         // thisMarker.setZIndex(thatMarker.getZIndex());
+         $(markerElement).find('.cc-map-marker').removeClass('img-icon-anim');
+         $(markerElement).find('.cc-map-marker').children('.element').remove();
+       }
+
+       parsed_map_vars = JSON.parse(map_vars);
+
+       var ccIcon = L.divIcon({
+           html: '<div class="cc-map-marker"><img class="img-fluid" src="/app/themes/culturecollide-theme/dist/images/map_icon.png" srcset="/app/themes/culturecollide-theme/dist/images/map_icon.png 1x, /app/themes/culturecollide-theme/dist/images/map_icon@2x.png 2x" /></div>',
+       });
+       $('#cc-map').ready(function() {
+         map = L.map('cc-map',{scrollWheelZoom:false}).setView([parsed_map_vars.city.location.lat, parsed_map_vars.city.location.lng], 14);
+
+         var mbURL = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=',
+         mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+         L.tileLayer(mbURL + parsed_map_vars.map_info.api_key, {id: 'mapbox.light', attribution: mbAttr}).addTo(map);
+         markers = L.layerGroup();
+         for(var x = 0; x < parsed_map_vars.locations.length; x++) {
+           var feature = parsed_map_vars.locations[x];
+           var marker_place = L.marker([feature.coords.lat, feature.coords.lng],{icon:ccIcon, riseOnHover:true});
+           markers.addLayer(marker_place);
+           feature.marker_id = markers.getLayerId(marker_place);
+           $('#'+feature.location_id).attr('data-cc-marker', feature.marker_id);
+           $('#'+feature.location_id).addClass(feature.marker_id);
+           marker_place.on('click', scrollToDetail);
+         }
+         markers.addTo(map);
+       });
+
+     scrollToDetail = function() {
+       console.log(this._icon);
+       Waypoint.disableAll();
+       var _id = this._leaflet_id;
+       var scrollItem = $('[data-cc-marker="'+_id+'"]');
+       var container = $('.travel__detail__map__list');
+       $('*').removeClass('img-icon-anim');
+       loadMarker(_id);
+       container.animate({
+         scrollTop: scrollItem.offset().top - container.offset().top + container.scrollTop()
+       }, 2000, function() {
+         Waypoint.enableAll();
+       });
+     };
+     $.each(['.travel__detail__map__item'], function(i, classname) {
+       var $elements = $(classname);
+       $elements.each(function() {
+         new Waypoint({
+           element: this,
+           handler: function(direction) {
+             var previousWaypoint = this.previous();
+             var nextWaypoint = this.next();
+             $elements.removeClass('np-previous np-current np-next');
+
+             if (previousWaypoint && direction === 'down') {
+               var _prevId = $(previousWaypoint.element).attr('data-cc-marker');
+               var _prevMarker = markers.getLayer(_prevId);
+              //  var _prevMarker = markers[Number.parseInt(_prevId)];
+              //  removeIconDetails(_prevMarkerEl, _prevMarker)
+               $(previousWaypoint.element).addClass('np-previous');
+             }
+
+             $(this.element).addClass('np-current')
+             var _id = $(this.element).attr('data-cc-marker');
+             var _marker = markers.getLayer(_id);
+             var _markerEl = $(_marker._icon);
+             showIconDetails(_markerEl, _marker);
+             map.flyTo(_marker.getLatLng());
+
+             if (nextWaypoint && direction === 'up') {
+               $(nextWaypoint.element).addClass('np-next');
+               var _nextId = $(nextWaypoint.element).attr('data-cc-marker');
+              //  var _nextMarkerEl = $('.cc-map-marker.'+_nextId);
+              //  var _nextMarker = markers[Number.parseInt(_nextId)];
+              //  removeIconDetails(_nextMarkerEl, _nextMarker)
+             }
+
+           },
+           offset: -10,
+           group: classname,
+           context: $('.travel__detail__map__list')[0]
+         });
+       });
+     });
+    }
+   }
+
   };
 
   // The routing fires all common scripts, followed by the page specific scripts.

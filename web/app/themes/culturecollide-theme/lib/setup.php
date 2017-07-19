@@ -114,14 +114,7 @@ function assets() {
     wp_enqueue_script('comment-reply');
   }
 
-  if( get_post_type() == 'artist' || get_post_type() == 'city' ) {
-    wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-    // wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?&key='.GOOGLE_MAP_API/*.'&callback=initMap'*/, ['sage/js'], null, true);
-    // wp_enqueue_script('rich-marker', Assets\asset_path('scripts/rich_marker.js'), ['google-maps','sage/js','jquery'], null, true);
-    // wp_enqueue_script('rich-marker', Assets\asset_path('scripts/div_marker.js'), ['google-maps','sage/js','jquery'], null, true);
-  } else {
-    wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
-  }
+  wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
