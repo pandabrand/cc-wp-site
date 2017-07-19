@@ -3,7 +3,8 @@
     "main.js": {
       "files": [
         "scripts/main.js",
-        "scripts/app.js"
+        "scripts/app.js",
+        "scripts/map_styles.js"
       ],
       "main": true
     },
@@ -20,6 +21,19 @@
     },
     "jquery.js": {
       "bower": ["jquery"]
+    },
+    "map_data.js": {
+      "files": [
+        "scripts/map_data.js"
+      ]
+    }
+  },
+  "overrides": {
+    "waypoints": {
+      "main": [
+        "./lib/jquery.waypoints.js",
+        "./lib/shortcuts/sticky.js"
+      ]
     }
   },
   "config": {

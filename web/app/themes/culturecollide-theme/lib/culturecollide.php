@@ -31,8 +31,12 @@ function get_post_icon_class($post = null) {
     $icon_class = 'icon icon-travel-white';
   } else {
     $post_categories = wp_get_post_categories( $post->ID );
-    $category = get_category($post_categories[0]);
-    $icon_class = 'icon icon-'.$category->slug.'-white';
+    if( !empty ( $post_categories ) ) {
+      $category = get_category($post_categories[0]);
+      $icon_class = 'icon icon-'.$category->slug.'-white';
+    } else {
+      $icon_class = 'icon icon-travel-white';
+    }
   }
   return $icon_class;
 }
@@ -47,6 +51,9 @@ function get_category_type_title($post = null) {
   $category_type;
   if($post->post_type == 'artist' || $post->post_type == 'city') {
     $category_type = 'travel guide';
+  } elseif ($post->post_type == 'location') {
+    $location_terms = get_the_terms( $post, 'location_types' );
+    $category_type = (!empty($location_terms)) ? $location_terms[0]->name : '';
   } else {
     $post_categories = wp_get_post_categories( $post->ID );
     $category = get_category($post_categories[0]);

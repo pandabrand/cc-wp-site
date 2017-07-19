@@ -14,6 +14,7 @@
     "kds-google-maps-utility-library-v3": "*",
     "lodash": "^4.17.4",
     "normalize-css": "normalize.css#^7.0.0",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "leaflet": "^1.1.0"
   }
 }

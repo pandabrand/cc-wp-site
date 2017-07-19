@@ -16,7 +16,8 @@ $sage_includes = [
   'lib/titles.php',    // Page titles
   'lib/wrapper.php',   // Theme wrapper class
   'lib/customizer.php', // Theme customizer
-  'lib/culturecollide.php'
+  'lib/culturecollide.php',
+  'lib/map_data.php'
 ];
 
 foreach ($sage_includes as $file) {

@@ -1,10 +1,10 @@
 <div class="row cc-row travel travel__header-color">
   <div class="col-12 travel travel__header">
     <div class="travel__header__title">
-      <?php echo get_the_title(); ?>
+      travel with purpose
     </div>
     <div class="travel__header__subtitle">
-      <?php strip_tags( the_content() ); ?>
+      Take a tour with today's top bands, artists, and tastemakers
     </div>
   </div>
   <div class="col-12 travel travel__navigation">

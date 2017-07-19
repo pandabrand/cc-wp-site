@@ -138,6 +138,7 @@ var jsTasks = function(filename) {
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.init());
     })
+    // .pipe(debug({title: 'unicorn:'}))
     .pipe(concat, filename)
     .pipe(uglify, {
       compress: {
@@ -201,6 +202,7 @@ gulp.task('scripts', ['jshint'], function() {
   manifest.forEachDependency('js', function(dep) {
     merged.add(
       gulp.src(dep.globs, {base: 'scripts'})
+        // .pipe(debug({title: 'unicorn:'}))
         .pipe(plumber({errorHandler: onError}))
         .pipe(jsTasks(dep.name))
     );
