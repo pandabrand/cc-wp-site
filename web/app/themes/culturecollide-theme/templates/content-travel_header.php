@@ -64,6 +64,17 @@
                   "order" => "ASC",
                   "numberposts" => "25"
                 );
+                if(get_post_type() == 'city') {
+                  $meta = array(
+                    array(
+                      "key" => "artist_city",
+                      "value" => $post->ID,
+                      "compare" => "LIKE"
+                    )
+                  );
+                  $args["meta_query"] = $meta;
+                }
+
                 $artists = get_posts( $args );
                 if( !empty( $artists ) ):
                   foreach( $artists as $post ): setup_postdata( $post );
