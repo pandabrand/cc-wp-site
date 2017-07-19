@@ -1,4 +1,3 @@
-var map, mapoverlay, parsed_map_vars, markers;
 var pulseElement = document.createElement('div');
 pulseElement.classList.add('element');
 var thatMarker;

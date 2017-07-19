@@ -161,6 +161,24 @@
     },
     'artist_template_default': {
       init: function() {
+        var map, mapoverlay, parsed_map_vars, markers;
+        var pulseElement = document.createElement('div');
+        pulseElement.classList.add('element');
+        var thatMarker;
+
+        showIconDetails = function(markerElement, thisMarker) {
+          thatMarker = thisMarker;
+          // thisMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+          $(markerElement).find('.cc-map-marker').addClass('img-icon-anim');
+          $(markerElement).find('.cc-map-marker').append(pulseElement);
+        };
+
+        removeIconDetails = function(markerElement, thisMarker) {
+          // thisMarker.setZIndex(thatMarker.getZIndex());
+          $(markerElement).find('.cc-map-marker').removeClass('img-icon-anim');
+          $(markerElement).find('.cc-map-marker').children('.element').remove();
+        }
+
         parsed_map_vars = JSON.parse(map_vars);
 
         var ccIcon = L.divIcon({
@@ -184,19 +202,11 @@
           }
           markers.addTo(map);
         });
-      //   map = new google.maps.Map($('.travel__detail__map__map').get(0), {
-      //    zoom: 16,
-      //    center: new google.maps.LatLng(parsed_map_vars.city.location.lat, parsed_map_vars.city.location.lng),
-      //    scrollwheel: false,
-      //    styles: styles,
-      //    mapTypeControl: false,
-      //    streetViewControl: false
-      //  });
+
       scrollToDetail = function() {
-        console.dir(this);
+        console.log(this._icon);
         Waypoint.disableAll();
         var _id = this._leaflet_id;
-        console.dir(_id);
         var scrollItem = $('[data-cc-marker="'+_id+'"]');
         var container = $('.travel__detail__map__list');
         $('*').removeClass('img-icon-anim');
@@ -207,7 +217,46 @@
           Waypoint.enableAll();
         });
       };
+      $.each(['.travel__detail__map__item'], function(i, classname) {
+        var $elements = $(classname);
+        $elements.each(function() {
+          new Waypoint({
+            element: this,
+            handler: function(direction) {
+              var previousWaypoint = this.previous();
+              var nextWaypoint = this.next();
+              $elements.removeClass('np-previous np-current np-next');
 
+              if (previousWaypoint && direction === 'down') {
+                var _prevId = $(previousWaypoint.element).attr('data-cc-marker');
+                var _prevMarker = markers.getLayer(_prevId);
+               //  var _prevMarker = markers[Number.parseInt(_prevId)];
+               //  removeIconDetails(_prevMarkerEl, _prevMarker)
+                $(previousWaypoint.element).addClass('np-previous');
+              }
+
+              $(this.element).addClass('np-current')
+              var _id = $(this.element).attr('data-cc-marker');
+              var _marker = markers.getLayer(_id);
+              var _markerEl = $(_marker._icon);
+              showIconDetails(_markerEl, _marker);
+              map.flyTo(_marker.getLatLng());
+
+              if (nextWaypoint && direction === 'up') {
+                $(nextWaypoint.element).addClass('np-next');
+                var _nextId = $(nextWaypoint.element).attr('data-cc-marker');
+               //  var _nextMarkerEl = $('.cc-map-marker.'+_nextId);
+               //  var _nextMarker = markers[Number.parseInt(_nextId)];
+               //  removeIconDetails(_nextMarkerEl, _nextMarker)
+              }
+
+            },
+            offset: -10,
+            group: classname,
+            context: $('.travel__detail__map__list')[0]
+          });
+        });
+      });
      },
      finalize: function() {
       // mapoverlay = new google.maps.OverlayView();
