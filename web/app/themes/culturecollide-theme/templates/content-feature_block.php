@@ -1,41 +1,47 @@
-<?php
-$args = array(
-    'posts_per_page' => 4,
-    'post_type' => ['post'],
-  );
-  $the_query = new WP_Query($args);
-?>
-<?php if($the_query->have_posts()): ?>
-<?php while($the_query->have_posts()): $the_query->the_post(); ?>
-<?php switch ($the_query->current_post):
-case 0: ?>
 <div class="row cc-row feature-block_color feature-block home">
-<div class="col-md-6">
-<?php include( locate_template('layouts/feature-block__1-2.php')); ?>
-</div>
+  <?php
+    if( is_front_page() ):
+      $main_post_object = get_field('main_feature');
+      // debug_var($main_post_object);
+      // override $post
+    	$post = $main_post_object;
+    	setup_postdata( $post );
+  ?>
+  <div class="col-md-6">
+    <?php include( locate_template( 'layouts/feature-block__1-2.php' ) ); ?>
+  </div>
 <?php
-break;
-case 1:
+    endif;
+    wp_reset_postdata();
+    $second_features = get_field('secondary_main_feature');
+    // debug_var($second_features);
 ?>
-<div class="col-md-6 col-lg-3">
-<?php include( locate_template('layouts/feature-block__1-4-tall.php')); ?>
-<div class="hidden-md-up w-100"></div>
+  <div class="col-md-6 col-lg-3">
+  <?php
+    $first_feature = $second_features[0];
+    // debug_var($first_feature['feature_object']);
+    $post = $first_feature['feature_object'];
+    setup_postdata($post);
+  ?>
+    <?php include( locate_template('layouts/feature-block__1-4-tall.php')); ?>
+  <?php wp_reset_postdata(); ?>
+  <div class="hidden-md-up w-100"></div>
+  </div>
+  <div class="col-md-12 col-lg-3 last-child">
+    <?php
+      $sec_feature = $second_features[1];
+      $post = $sec_feature['feature_object'];
+      setup_postdata($post);
+    ?>
+    <?php include( locate_template('layouts/feature-block__square.php')); ?>
+    <?php wp_reset_postdata(); ?>
+    <?php
+      $third_feature = $second_features[2];
+      $post = $third_feature['feature_object'];
+      setup_postdata($post);
+    ?>
+      <?php include( locate_template('layouts/feature-block__square.php')); ?>
+    <?php wp_reset_postdata(); ?>
+  </div>
 </div>
-<div class="col-md-12 col-lg-3 last-child">
-<?php
-break;
-case 2:
-?>
-<?php include( locate_template('layouts/feature-block__square.php')); ?>
-<?php
-break;
-case 3:
-?>
-<?php include( locate_template('layouts/feature-block__square.php')); ?>
-</div>
-</div>
-<?php break ;?>
-<?php endswitch; ?>
-<?php endwhile; ?>
-<?php endif; ?>
 <?php wp_reset_query(); ?>

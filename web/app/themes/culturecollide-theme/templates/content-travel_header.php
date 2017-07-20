@@ -9,14 +9,14 @@
   </div>
   <div class="col-12 travel travel__navigation">
     <div class="row cc-row text-right">
-      <nav class="navbar col-6">
+      <nav class="hidden-sm-up navbar col-6">
         <a class="button button--outline button--outline" type="button" data-toggle="collapse" data-target="#travel-navigate" aria-controls="travel-navigate" aria-expanded="false" aria-label="Toggle navigation">
           BROWSE
         </a>
       </nav>
 
-      <div class="collapse" id="travel-navigate">
-        <div class="dropdown full-width col-xs-4 col-sm-2">
+      <div class="collapsed row" id="travel-navigate">
+        <div class="dropdown full-width col-xs-12 col-sm-4">
           <a href="#" class="btn btn-secondary dropdown-toggle" id="citiesMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cities</a>
           <div class="dropdown-menu" aria-labelledby="citiesMenuLink">
             <div class="row">
@@ -59,7 +59,7 @@
             </div>
           </div>
         </div>
-        <div class="dropdown full-width col-xs-4 col-sm-2">
+        <div class="dropdown full-width col-xs-12 col-sm-4">
           <a href="#" rel="nofollow" class="btn btn-secondary dropdown-toggle" id="artistsMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Artists</a>
           <div class="dropdown-menu" aria-labelledby="artistsMenuLink">
             <div class="row">
@@ -115,7 +115,7 @@
             </div>
           </div>
         </div>
-        <div class="dropdown full-width col-xs-4 col-sm-2">
+        <div class="dropdown full-width col-xs-12 col-sm-4">
           <a href="#" rel="nofollow" class="btn btn-secondary dropdown-toggle" id="categoriesMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
           <div class="dropdown-menu" aria-labelledby="categoriesMenuLink">
             <div class="row">

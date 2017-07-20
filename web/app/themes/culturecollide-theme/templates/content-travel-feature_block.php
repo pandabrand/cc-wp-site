@@ -1,19 +1,16 @@
 <div class="row cc-row travel travel-feature">
   <?php
-    $args = array(
-      "post_type" => ["artist","city"],
-      "numberposts" => 2,
-      "order" => "rand"
-    );
-    $feature_posts = get_posts($args);
+    $feature_posts = get_field('travel_features');
     if( !empty( $feature_posts ) ):
-      foreach( $feature_posts as $post ): setup_postdata( $post );
+      foreach( $feature_posts as $feature ):
+        $post = $feature['feature'];
+        setup_postdata( $post );
   ?>
   <div class="col-xs-12 col-sm-6 mb-4">
     <?php get_template_part('layouts/travel', 'feature-block__1-2'); ?>
   </div>
   <?php
-      endforeach;
+endforeach;
       wp_reset_postdata();
     endif;
   ?>
