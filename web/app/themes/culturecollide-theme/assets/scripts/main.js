@@ -188,7 +188,7 @@
           // thisMarker.setZIndex(thatMarker.getZIndex());
           $(markerElement).find('.cc-map-marker').removeClass('img-icon-anim');
           $(markerElement).find('.cc-map-marker').children('.element').remove();
-        }
+        };
 
         parsed_map_vars = JSON.parse(map_vars);
 
@@ -246,7 +246,7 @@
                 $(previousWaypoint.element).addClass('np-previous');
               }
 
-              $(this.element).addClass('np-current')
+              $(this.element).addClass('np-current');
               var _id = $(this.element).attr('data-cc-marker');
               var _marker = markers.getLayer(_id);
               var _markerEl = $(_marker._icon);
@@ -288,7 +288,7 @@
          // thisMarker.setZIndex(thatMarker.getZIndex());
          $(markerElement).find('.cc-map-marker').removeClass('img-icon-anim');
          $(markerElement).find('.cc-map-marker').children('.element').remove();
-       }
+       };
 
        parsed_map_vars = JSON.parse(map_vars);
 
@@ -346,7 +346,7 @@
                $(previousWaypoint.element).addClass('np-previous');
              }
 
-             $(this.element).addClass('np-current')
+             $(this.element).addClass('np-current');
              var _id = $(this.element).attr('data-cc-marker');
              var _marker = markers.getLayer(_id);
              var _markerEl = $(_marker._icon);
@@ -388,7 +388,7 @@
          // thisMarker.setZIndex(thatMarker.getZIndex());
          $(markerElement).find('.cc-map-marker').removeClass('img-icon-anim');
          $(markerElement).find('.cc-map-marker').children('.element').remove();
-       }
+       };
 
        parsed_map_vars = JSON.parse(map_vars);
 
@@ -446,7 +446,7 @@
                $(previousWaypoint.element).addClass('np-previous');
              }
 
-             $(this.element).addClass('np-current')
+             $(this.element).addClass('np-current');
              var _id = $(this.element).attr('data-cc-marker');
              var _marker = markers.getLayer(_id);
              var _markerEl = $(_marker._icon);
