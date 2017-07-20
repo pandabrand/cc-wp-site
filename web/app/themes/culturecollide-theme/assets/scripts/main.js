@@ -396,7 +396,7 @@
            html: '<div class="cc-map-marker"><img class="img-fluid" src="/app/themes/culturecollide-theme/dist/images/map_icon.png" srcset="/app/themes/culturecollide-theme/dist/images/map_icon.png 1x, /app/themes/culturecollide-theme/dist/images/map_icon@2x.png 2x" /></div>',
        });
        $('#cc-map').ready(function() {
-         map = L.map('cc-map',{scrollWheelZoom:false}).setView([parsed_map_vars.city.location.lat, parsed_map_vars.city.location.lng], 14);
+         map = L.map('cc-map',{scrollWheelZoom:false}).setView([parsed_map_vars.city.location.lat, parsed_map_vars.city.location.lng], 10);
 
          var mbURL = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=',
          mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
@@ -469,6 +469,44 @@
        });
      });
     }
+   },
+   'travel': {
+     init: function() {
+       $('.travel__artist-guides__carousel, .travel__artist-guides__carousel').slick({
+         infinite: true,
+         slidesToShow: 4,
+         slidesToScroll: 0,
+         dots: false,
+         arrows: false,
+         responsive: [
+           {
+             breakpoint: 1025,
+             settings: "noslick"
+           },
+           {
+             breakpoint: 769,
+             settings: {
+               infinite: true,
+               arrows: false,
+               dots: true,
+               slidesToShow: 2,
+               slidesToScroll: 2,
+             }
+           },
+           {
+             breakpoint: 481,
+             settings: {
+               infinite: true,
+               arrows: false,
+               dots: true,
+               slidesToShow: 1,
+               slidesToScroll: 1,
+               centerMode: true,
+             }
+           }
+         ]
+       });
+     }
    }
 
   };

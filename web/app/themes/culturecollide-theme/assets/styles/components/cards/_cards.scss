@@ -46,6 +46,9 @@ $card__border__color:  $white;
         font-size: .75rem;
         overflow: hidden;
       }
+      .card__address, .card__link {
+        font-size: .75rem;
+      }
     }
   }
   .card__category-block {

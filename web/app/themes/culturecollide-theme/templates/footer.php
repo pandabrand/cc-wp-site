@@ -7,7 +7,8 @@
           wp_nav_menu([
             'theme_location' => 'footer_menu_one',
             'menu_class' => 'nav justify-content-center navigation__list navigation__list__footer footer-nav-menu',
-            'menu_id' => 'footer-menu-one'
+            'menu_id' => 'footer-menu-one',
+            'container_class' => 'collapse'
           ]);
         endif;
         ?>

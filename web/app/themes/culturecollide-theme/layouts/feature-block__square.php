@@ -1,4 +1,4 @@
-<div class="feature feature-1-4">
+<div class="feature feature-1-4 col-12">
   <a class="feature__link" href="<?php echo get_permalink($post->ID); ?>"></a>
   <div class="img-fluid feature__image" style="background-image:url('<?php echo the_post_thumbnail_url('large-feature'); ?>')"></div>
   <div class="feature__category-block">

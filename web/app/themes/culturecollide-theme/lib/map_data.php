@@ -56,6 +56,9 @@ function load_map_data() {
       $locations = get_posts(array(
         "post_type" => "location",
         "numberposts" => -1,
+        "orderby" => "meta_value",
+        "meta_key" => "location_city",
+        "order" => "asc",
         $term->taxonomy => $term->name
       ));
       if( !empty( $locations ) ) {
@@ -69,13 +72,14 @@ function load_map_data() {
           $json_locations['locations'][] = $location_output;
         }
         $first = get_field('location_city', $locations[0]->ID);
-        write_log($first);
-        $city = get_post($first[0]);
-        write_log($city);
+        // write_log($first);
+        $first_city = get_post($first[0]);
+        // write_log($first_city);
         $city = array(
-          'title' => get_the_title($city->ID),
-          'location' => get_field('city_location', $city->ID)
+          'title' => get_the_title($first_city->ID),
+          'location' => get_field('city_location', $first_city->ID)
         );
+        write_log($city);
         $json_locations['city'] = $city;
       }
     }

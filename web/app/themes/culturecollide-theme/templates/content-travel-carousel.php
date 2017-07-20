@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="col-12 text-center">
-      <a href="#" class="button button--outline home__city-guides-block__carousel-block__link">explore travel</a>
+      <a href="/travel" class="button button--outline home__city-guides-block__carousel-block__link">explore travel</a>
     </div>
   </div>
 </div>

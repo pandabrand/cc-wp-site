@@ -1,4 +1,4 @@
-<div class="col-6 col-xs-12 event__block">
+<div class="col-xs-12 col-sm-6 event__block">
   <div class="event-block-wrapper__square">
     <div class="event-block__square">
       <div class="event-image__square" style="background-image:url('<?php echo the_post_thumbnail_url('large-feature'); ?>')">
@@ -14,7 +14,7 @@
               <?php $address = get_field('event_address'); echo $address['address']; ?>
             </div>
           </div>
-          <div class="event-block__excerpt">
+          <div class="event-block__excerpt hidden-xs-down">
             <?php the_excerpt(); ?>
           </div>
           <a href="<?php the_permalink(); ?>" class="invert button button--outline button--outline--white button--small">

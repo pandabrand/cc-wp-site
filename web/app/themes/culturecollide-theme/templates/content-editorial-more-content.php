@@ -23,7 +23,7 @@ if($more_query->have_posts()): $counter = 1; ?>
         <?php get_template_part('layouts/card', 'card__1-1'); ?>
       </div>
     <?php else: ?>
-      <div class="col-4">
+      <div class="col-xs-12 col-sm-4">
         <?php get_template_part('layouts/card', 'card__3-1'); ?>
       </div>
   <?php endif; ?>
