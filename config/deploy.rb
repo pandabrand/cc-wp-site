@@ -49,7 +49,7 @@ set :composer_install_flags, '--no-interaction --optimize-autoloader --ignore-pl
 # set :local_user, -> { `git config user.name`.chomp }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 2
 
 namespace :deploy do
   desc 'Restart application'
