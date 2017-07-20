@@ -19,6 +19,12 @@
     padding: 3px 0 8px;
     height: 30px;
   }
+  &:after {
+    clear:both;
+  }
+  a {
+    line-height: normal;
+  }
 }
 
 .navbar-toggler {

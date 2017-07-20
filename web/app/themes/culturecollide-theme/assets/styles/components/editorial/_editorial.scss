@@ -14,6 +14,9 @@
 
 .editorial__detail__article {
   margin-top: -9%;
+  &.about {
+    margin-top: -39%;
+  }
   main {
     background-color: $white;
     color: $black;
