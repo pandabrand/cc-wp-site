@@ -37,6 +37,16 @@ a {
     color: $color__link--active;
     text-decoration: none;
   }
+  &.invert {
+    color: $white;
+    &:link, &:visited {
+      color: $white;
+    }
+    &:hover, &:active {
+      color: $light-gray;
+      text-decoration: none;
+    }
+  }
 }
 
 .block__link {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "66c5c6ac586c83a530f115504c5eca93",
+    "content-hash": "088b07bbf3252f2f67ab4ce48ec20a48",
     "packages": [
         {
             "name": "composer/installers",
@@ -337,7 +337,7 @@
                 "source": "https://github.com/pandabrand/cc-plugin/tree/master",
                 "issues": "https://github.com/pandabrand/cc-plugin/issues"
             },
-            "time": "2017-07-17T22:17:13+00:00"
+            "time": "2017-07-20T05:22:00+00:00"
         },
         {
             "name": "roots/wp-password-bcrypt",
@@ -515,6 +515,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/import-external-attachments/"
+        },
+        {
+            "name": "wpackagist-plugin/ninja-forms",
+            "version": "3.1.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/ninja-forms/",
+                "reference": "tags/3.1.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ninja-forms.3.1.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/ninja-forms/"
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",

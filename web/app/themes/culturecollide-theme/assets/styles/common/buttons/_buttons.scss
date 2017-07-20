@@ -10,6 +10,9 @@
   &.button--outline {
     border: $black solid 2px;
   }
+  &.button--outline--white {
+    border: $white solid 2px;
+  }
   &.button--white {
     border: none;
   }
@@ -24,6 +27,10 @@
   }
   a {
     line-height: normal;
+  }
+  &.nf-element {
+    padding: .75rem 3rem;
+    background-color: $white;
   }
 }
 

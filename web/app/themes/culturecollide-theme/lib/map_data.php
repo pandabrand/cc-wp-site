@@ -3,7 +3,7 @@
 function load_map_data() {
   global $post;
   $json_locations = array('locations' => array());
-    if( get_post_type($post->ID) == 'artist' ) {
+    if( is_single() && get_post_type($post->ID) == 'artist' ) {
       if( have_rows( 'artists_locations', $post->ID ) ) {
         while( have_rows( 'artists_locations', $post->ID ) ): the_row();
           $location = get_sub_field('location')[0];
@@ -22,7 +22,7 @@ function load_map_data() {
         'location' => get_field('city_location', $related_city->ID)
       );
       $json_locations['city'] = $city;
-    } elseif ( get_post_type() == 'city' ) {
+    } elseif ( is_single() && get_post_type() == 'city' ) {
       $locations = get_posts(array(
         "numberposts" => -1,
         "post_type" => "location",
