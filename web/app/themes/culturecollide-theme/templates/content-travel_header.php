@@ -159,7 +159,8 @@
         </div>
       </div>
       <div class="col-6">
-        <a href="#" class="btn btn-secondary travel__navigation__button">Near Me</a>
+        <a href="#" rel="noreferrer" class="btn btn-secondary travel__navigation__button">Near Me</a>
+        <input type="hidden" value="77" class="post_id" />
       </div>
     </div>
   </div>

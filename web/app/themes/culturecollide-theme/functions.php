@@ -17,7 +17,8 @@ $sage_includes = [
   'lib/wrapper.php',   // Theme wrapper class
   'lib/customizer.php', // Theme customizer
   'lib/culturecollide.php',
-  'lib/map_data.php'
+  'lib/map_data.php',
+  'lib/locate_user.php'
 ];
 
 foreach ($sage_includes as $file) {

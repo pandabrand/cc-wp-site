@@ -26,6 +26,11 @@
       "files": [
         "scripts/map_data.js"
       ]
+    },
+    "locate_user.js": {
+      "files": [
+        "scripts/locate_user.js"
+      ]
     }
   },
   "overrides": {
