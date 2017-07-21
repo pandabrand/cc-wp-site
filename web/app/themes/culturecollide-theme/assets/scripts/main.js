@@ -262,7 +262,7 @@
               }
 
             },
-            offset: -10,
+            offset: 10,
             group: classname,
             context: $('.travel__detail__map__list')[0]
           });
