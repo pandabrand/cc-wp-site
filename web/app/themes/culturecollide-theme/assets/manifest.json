@@ -5,7 +5,7 @@
         "scripts/main.js",
         "scripts/app.js",
         "scripts/map_styles.js",
-        "../bower_components/haversine/haversine.js"
+        "scripts/haversine.js"
       ],
       "main": true
     },
