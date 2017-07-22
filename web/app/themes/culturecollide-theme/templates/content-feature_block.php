@@ -16,31 +16,21 @@
     $second_features = get_field('secondary_main_feature');
     // debug_var($second_features);
 ?>
-  <div class="col-md-6 col-lg-3">
+  <div class="col-md-6 col-sm-12">
   <?php
     $first_feature = $second_features[0];
     // debug_var($first_feature['feature_object']);
     $post = $first_feature['feature_object'];
     setup_postdata($post);
   ?>
-    <?php include( locate_template('layouts/feature-block__1-4-tall.php')); ?>
+  <?php include( locate_template('layouts/feature-block__2-1-long.php')); ?>
   <?php wp_reset_postdata(); ?>
-  <div class="hidden-md-up w-100"></div>
-  </div>
-  <div class="col-md-12 col-lg-3 last-child">
     <?php
       $sec_feature = $second_features[1];
       $post = $sec_feature['feature_object'];
       setup_postdata($post);
     ?>
-    <?php include( locate_template('layouts/feature-block__square.php')); ?>
-    <?php wp_reset_postdata(); ?>
-    <?php
-      $third_feature = $second_features[2];
-      $post = $third_feature['feature_object'];
-      setup_postdata($post);
-    ?>
-      <?php include( locate_template('layouts/feature-block__square.php')); ?>
+    <?php include( locate_template('layouts/feature-block__2-1-long.php')); ?>
     <?php wp_reset_postdata(); ?>
   </div>
 </div>
