@@ -55,3 +55,11 @@ a {
   height: 100%;
   z-index: 15;
 }
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}

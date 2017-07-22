@@ -65,10 +65,8 @@
 </header>
 <div class="container-fluid search">
   <div class="row cc-row">
-    <div class="col-12">
-      <form class="form search-form">
-        <input class="input form__input form-control search-form__input" type="search" name="search" placeholder="search..." />
-      </form>
+    <div class="col-12 rounded-bottom">
+      <?php get_search_form(); ?>
     </div>
   </div>
 </div>

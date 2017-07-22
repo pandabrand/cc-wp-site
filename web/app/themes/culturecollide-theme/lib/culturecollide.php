@@ -2,7 +2,10 @@
 if( ! function_exists('add_classes_on_li') ):
   function add_classes_on_li($classes, $item, $args) {
     if($args->menu_id == 'header-menu'):
-      $classes = array('nav-item navigation__item navigation__item__header navbar_navigation__item__header');
+      $class_str = 'nav-item navigation__item navigation__item__header navbar_navigation__item__header';
+      $class_str = ($item->post_title == 'search') ? $class_str . ' link_search-form_opener' : $class_str . '';
+      write_log($class_str);
+      $classes = array($class_str);
     endif;
     if($args->menu_id == 'footer-menu-one' || $args->menu_id == 'footer-menu-two'):
       $classes = array('nav-item navigation__item navigation__item__footer');
