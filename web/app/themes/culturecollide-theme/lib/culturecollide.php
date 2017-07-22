@@ -199,16 +199,34 @@ function cc_mce_before_init_insert_formats( $init_array ) {
 // Attach callback to 'tiny_mce_before_init'
 add_filter( 'tiny_mce_before_init', 'cc_mce_before_init_insert_formats' );
 
-add_action( 'pre_get_posts', 'location_types_category_archives' );
-function location_types_category_archives( $query ) {
+add_action( 'pre_get_posts', 'cc_category_archives' );
+function cc_category_archives( $query ) {
   if ( is_tax( 'location_types') )  {
     $query->set( 'posts_per_page', -1 );
     $query->set( 'nopaging', true );
     $query->set( 'orderby', 'meta_value' );
     $query->set( 'meta_key', 'location_city');
     $query->set( 'order', 'asc' );
+  } elseif( is_post_type_archive( ['city', 'artist'] ) ) {
+    $query->set( 'posts_per_page', 12 );
   }
 
+}
+
+function cc_archive_title() {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
+
+    return $title;
 }
 
 function debug_var($var) {
