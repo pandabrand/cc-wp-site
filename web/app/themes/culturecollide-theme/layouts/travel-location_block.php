@@ -17,7 +17,7 @@
             <div class="card__category-line"></div>
             <div class="card__filter"></div>
             <div class="card__body">
-              <div class="card__copy">
+              <div class="card__copy d-flex flex-column">
                 <div class="card__title">
                   <?php echo get_card_title($location); ?>
                 </div>
@@ -28,7 +28,31 @@
                   <?php $address = get_field('address', $location->ID); ?>
                   <?php echo $address['address']; ?>
                 </div>
-                <div class="card__links d-flex justify-content-between">
+                <?php
+                  $args = array (
+                    "numberposts" => 3,
+                    "post_type" => "artist",
+                    "meta_query" => array (
+                      'key' => 'location',
+                      'compare' => 'LIKE',
+                      'value' => "'".$location->ID."'"
+                      )
+                    );
+
+                  $artist_posts = get_posts($args);
+                  if( false ) :
+                    write_log($artist_posts);
+                ?>
+                  <div class="card_reccomendations">
+                    <h6>Artist Reccomendations</h6>
+                <?php foreach($artist_posts as $artist): ?>
+                    <div class="card_reccomendations__title">
+                      <!-- ?php echo get_the_title($artist->ID); ? -->
+                    </div>
+                <?php endforeach; ?>
+                  </div>
+                <?php endif; ?>
+                <div class="card__links mt-auto d-flex justify-content-between">
                   <div class="card__link">
                     <a href="<?php the_permalink($location->ID); ?>" rel="external" target="_blank"><i class="fa fa-desktop"></i> website</a>
                   </div>

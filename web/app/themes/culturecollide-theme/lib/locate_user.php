@@ -1,7 +1,7 @@
 <?php
 
 function enqueue_scripts_styles_init() {
-  if( is_single() || is_tax( 'location_types' ) || is_page( array(9972, 'travel') )):
+  if( is_single() || is_tax( 'location_types' ) ): //|| is_page( [9972, 'travel'] )):
     $args = array(
       "post_type" => "city",
       "numberposts" => -1,
@@ -25,7 +25,8 @@ function enqueue_scripts_styles_init() {
   	wp_localize_script( 'ajax-script', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) ); // setting ajaxurl
   endif;
 }
-add_action('init', 'enqueue_scripts_styles_init');
+add_action('wp_enqueue_scripts', 'enqueue_scripts_styles_init');
+// add_action('init', 'enqueue_scripts_styles_init');
 
 function ajax_action_stuff() {
 	echo 'ajax submitted';
