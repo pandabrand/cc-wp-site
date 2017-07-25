@@ -1,47 +1,3 @@
-var pulseElement = document.createElement('div');
-pulseElement.classList.add('element');
-var thatMarker;
-
-showIconDetails = function(markerElement, thisMarker) {
-  thatMarker = thisMarker;
-  // thisMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
-  // markerElement.addClass('img-icon-anim');
-  // markerElement.append(pulseElement);
-};
-
-removeIconDetails = function(markerElement, thisMarker) {
-  // thisMarker.setZIndex(thatMarker.getZIndex());
-  // markerElement.removeClass('img-icon-anim');
-  // markerElement.children('.element').remove();
-};
-
-
-loadMarker = function(_id) {
-  // var id = _id ||  _.keys(markers)[0];
-  // var marker = markers[id];
-  // var elements = document.getElementsByClassName('cc-map-marker '+id);
-  // console.dir(elements);
-  // var markerElement = elements[0];
-  // showIconDetails(markerElement, marker);
-};
-
-//kick it
-
-// scrollToDetail = function() {
-//   console.dir(this);
-//   Waypoint.disableAll();
-//   var _id = this.title;
-//   // var scrollItem = $('.travel__detail__map__item.'+_id);
-//   // var container = $('.travel__detail__map__list');
-//   // $('*').removeClass('img-icon-anim');
-//   // loadMarker(_id);
-//   // container.animate({
-//   //   scrollTop: scrollItem.offset().top - container.offset().top + container.scrollTop()
-//   // }, 2000, function() {
-//   //   Waypoint.enableAll();
-//   // });
-// };
-
 var styles = [
     {
       "elementType": "geometry",
@@ -224,12 +180,3 @@ var styles = [
       ]
     }
   ];
-
-// function initMap() {
-//    console.log('loading richmarker');
-//    var headID = document.getElementsByTagName("head")[0],
-//    newScript = document.createElement('script');
-//    newScript.type = 'text/javascript';
-//    newScript.src = "/app/themes/culturecollide-theme/dist/scripts/rich_marker.js";
-//    headID.appendChild(newScript);
-// }

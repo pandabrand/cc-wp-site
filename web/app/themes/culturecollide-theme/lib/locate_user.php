@@ -33,7 +33,7 @@ add_action('init', 'enqueue_scripts_styles_init');
 function ajax_action_stuff() {
 	$post_id = $_POST['post_id']; // getting variables from ajax post
 	// doing ajax stuff
-	update_post_meta($post_id, 'post_key', 'meta_value');
+	// update_post_meta($post_id, 'post_key', 'meta_value');
 	echo 'ajax submitted';
 	die(); // stop executing script
 }
