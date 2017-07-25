@@ -81,10 +81,10 @@
         //   new Waypoint.Sticky({ element: travel__navigation[0] },{ offset: '3%' });
         // }
 
-        // $('.link_search-form_opener > a').click(function(e) {
-        //   e.preventDefault();
-        //   $('.search-form').slideToggle('slow');
-        // });
+        $('.link_search-form_opener > a').click(function(e) {
+          e.preventDefault();
+          $('.search-form').slideToggle('slow');
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
