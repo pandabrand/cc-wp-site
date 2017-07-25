@@ -3,6 +3,7 @@
 function load_map_data() {
   global $post;
   $json_locations = array('locations' => array());
+  write_log($json_locations);
     if( is_single() && get_post_type($post->ID) == 'artist' ) {
       if( have_rows( 'artists_locations', $post->ID ) ) {
         while( have_rows( 'artists_locations', $post->ID ) ): the_row();
