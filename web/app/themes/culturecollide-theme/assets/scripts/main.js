@@ -19,6 +19,27 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        $('.share-tb').click(function() {
+          event.preventDefault();
+          makepopup($(this));
+        });
+
+        // var travel__navigation = $('.travel__navigation');
+        // $('travel__navigation').ready(function() {
+        //   new Waypoint.Sticky({ element: this[0] },{ offset: '3%' });
+        // });
+        // console.log(travel__navigation);
+        // if(travel__navigation.length) {
+        //   new Waypoint.Sticky({ element: travel__navigation[0] },{ offset: '3%' });
+        // }
+
+        $('.link_search-form_opener > a').click(function(e) {
+          e.preventDefault();
+          $('.search-form').slideToggle('slow');
+        });
+      },
+      finalize: function() {
+        // JavaScript to be fired on all pages, after page specific JS is fired
         window.twttr = (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0],
             t = window.twttr || {};
@@ -54,39 +75,16 @@
            fjs.parentNode.insertBefore(js, fjs);
          }(document, 'script', 'facebook-jssdk'));
 
-        // twttr.widgets.load();
-        $('.share-fb').click(function() {
-          event.preventDefault();
-          FB.ui({
-           method: 'share',
-           display: 'popup',
-           href: $(this).attr('href'),
-           }, function(response){
-             console.dir(response);
-           });
-        });
-
-        $('.share-tb').click(function() {
-          event.preventDefault();
-          makepopup($(this));
-        });
-
-        // var travel__navigation = $('.travel__navigation');
-        // $('travel__navigation').ready(function() {
-        //   new Waypoint.Sticky({ element: this[0] },{ offset: '3%' });
-        // });
-        // console.log(travel__navigation);
-        // if(travel__navigation.length) {
-        //   new Waypoint.Sticky({ element: travel__navigation[0] },{ offset: '3%' });
-        // }
-
-        $('.link_search-form_opener > a').click(function(e) {
-          e.preventDefault();
-          $('.search-form').slideToggle('slow');
-        });
-      },
-      finalize: function() {
-        // JavaScript to be fired on all pages, after page specific JS is fired
+         $('.share-fb').click(function() {
+           event.preventDefault();
+           FB.ui({
+            method: 'share',
+            display: 'popup',
+            href: $(this).attr('href'),
+            }, function(response){
+              console.dir(response);
+            });
+         });
       }
     },
     // Home page
