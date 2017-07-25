@@ -19,58 +19,58 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        // window.twttr = (function(d, s, id) {
-        //   var js, fjs = d.getElementsByTagName(s)[0],
-        //     t = window.twttr || {};
-        //   if (d.getElementById(id)) {return t;}
-        //   js = d.createElement(s);
-        //   js.id = id;
-        //   js.src = "https://platform.twitter.com/widgets.js";
-        //   js.async = true;
-        //   fjs.parentNode.insertBefore(js, fjs);
-        //
-        //   t._e = [];
-        //   t.ready = function(f) {
-        //     t._e.push(f);
-        //   };
-        //
-        //   return t;
-        // }(document, "script", "twitter-wjs"));
-        //
-        // window.fbAsyncInit = function() {
-        //   FB.init({
-        //     appId            : '199633970568255',
-        //     autoLogAppEvents : true,
-        //     xfbml            : true,
-        //     version          : 'v2.9'
-        //   });
-        //   FB.AppEvents.logPageView();
-        // };
-        //
-        // (function(d, s, id){
-        //    var js, fjs = d.getElementsByTagName(s)[0];
-        //    if (d.getElementById(id)) {return;}
-        //    js = d.createElement(s); js.id = id;
-        //    js.src = "//connect.facebook.net/en_US/sdk.js";
-        //    js.async = true;
-        //    fjs.parentNode.insertBefore(js, fjs);
-        //  }(document, 'script', 'facebook-jssdk'));
-        //
-        // $('.share-fb').click(function() {
-        //   event.preventDefault();
-        //   FB.ui({
-        //    method: 'share',
-        //    display: 'popup',
-        //    href: $(this).attr('href'),
-        //    }, function(response){
-        //      console.dir(response);
-        //    });
-        // });
-        //
-        // $('.share-tb').click(function() {
-        //   event.preventDefault();
-        //   makepopup($(this));
-        // });
+        window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) {return t;}
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          js.async = true;
+          fjs.parentNode.insertBefore(js, fjs);
+
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+
+          return t;
+        }(document, "script", "twitter-wjs"));
+
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '199633970568255',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v2.9'
+          });
+          FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           js.async = true;
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+
+        $('.share-fb').click(function() {
+          event.preventDefault();
+          FB.ui({
+           method: 'share',
+           display: 'popup',
+           href: $(this).attr('href'),
+           }, function(response){
+             console.dir(response);
+           });
+        });
+
+        $('.share-tb').click(function() {
+          event.preventDefault();
+          makepopup($(this));
+        });
 
         // var travel__navigation = $('.travel__navigation');
         // $('travel__navigation').ready(function() {
@@ -95,75 +95,75 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
-        // $('.home__city-guides-block__carousel-block__list').slick({
-        //   infinite: true,
-        //   slidesToShow: 5,
-        //   slidesToScroll: 5,
-        //   responsive: [
-        //     {
-        //       breakpoint: 1025,
-        //       settings: {
-        //         arrows: true,
-        //         dots: false,
-        //         slidesToShow: 4,
-        //         centerMode: true,
-        //       }
-        //     },
-        //     {
-        //       breakpoint: 769,
-        //       settings: {
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 3,
-        //         centerMode: true,
-        //       }
-        //     },
-        //     {
-        //       breakpoint: 481,
-        //       settings: {
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 1,
-        //         centerMode: true,
-        //       }
-        //     }
-        //   ]
-        // });
-        //
-        // $('.related-content__carousel').slick({
-        //   infinite: true,
-        //   slidesToShow: 3,
-        //   slidesToScroll: 0,
-        //   dots: false,
-        //   arrows: false,
-        //   responsive: [
-        //     {
-        //       breakpoint: 1025,
-        //       settings: "noslick"
-        //     },
-        //     {
-        //       breakpoint: 769,
-        //       settings: {
-        //         infinite: true,
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 2,
-        //         slidesToScroll: 2,
-        //       }
-        //     },
-        //     {
-        //       breakpoint: 481,
-        //       settings: {
-        //         infinite: true,
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 1,
-        //         slidesToScroll: 1,
-        //         centerMode: true,
-        //       }
-        //     }
-        //   ]
-        // });
+        $('.home__city-guides-block__carousel-block__list').slick({
+          infinite: true,
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          responsive: [
+            {
+              breakpoint: 1025,
+              settings: {
+                arrows: true,
+                dots: false,
+                slidesToShow: 4,
+                centerMode: true,
+              }
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                arrows: false,
+                dots: true,
+                slidesToShow: 3,
+                centerMode: true,
+              }
+            },
+            {
+              breakpoint: 481,
+              settings: {
+                arrows: false,
+                dots: true,
+                slidesToShow: 1,
+                centerMode: true,
+              }
+            }
+          ]
+        });
+
+        $('.related-content__carousel').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 0,
+          dots: false,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 1025,
+              settings: "noslick"
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                infinite: true,
+                arrows: false,
+                dots: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              }
+            },
+            {
+              breakpoint: 481,
+              settings: {
+                infinite: true,
+                arrows: false,
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                centerMode: true,
+              }
+            }
+          ]
+        });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
