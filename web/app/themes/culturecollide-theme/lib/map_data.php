@@ -1,9 +1,9 @@
 <?php
 
 function load_map_data() {
-  global $post;
   if( is_single() || is_tax( 'location_types' ) ):
-  $json_locations = array('locations' => array());
+    global $post;
+    $json_locations = array('locations' => array());
     if( is_single() && get_post_type($post->ID) == 'artist' ) {
       if( have_rows( 'artists_locations', $post->ID ) ) {
         while( have_rows( 'artists_locations', $post->ID ) ): the_row();
