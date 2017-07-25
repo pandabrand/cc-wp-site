@@ -32,11 +32,6 @@
       "files": [
         "scripts/locate_user.js"
       ]
-    },
-    "social_widgets.js": {
-      "files": [
-        "scripts/social_widgets.js"
-      ]
     }
   },
   "overrides": {

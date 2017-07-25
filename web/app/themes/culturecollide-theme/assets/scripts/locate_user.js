@@ -24,7 +24,9 @@ function error() {
 }
 
 jQuery(function($){
-	$('.travel__navigation__button').click(function () {
+	$('.travel__navigation__button').click(function (e) {
+    e.preventDefault();
+    console.dir('starting locate user');
     navigator.geolocation.getCurrentPosition(success, error);
 		// $.post(ajax_object.ajaxurl, {
 		// 	action: 'ajax_action',
