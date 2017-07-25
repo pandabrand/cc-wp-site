@@ -2,6 +2,7 @@
 
 function load_map_data() {
   global $post;
+  if( is_single() || is_tax( 'location_types' ) ):
   $json_locations = array('locations' => array());
     if( is_single() && get_post_type($post->ID) == 'artist' ) {
       if( have_rows( 'artists_locations', $post->ID ) ) {
@@ -88,5 +89,6 @@ function load_map_data() {
     wp_register_script('map_js', get_template_directory_uri() . '/dist/scripts/map_data.js', array(), null, true);
     wp_localize_script( 'map_js', 'map_vars', $js_data );
     wp_enqueue_script('map_js');
+  endif;
 }
 add_action('wp_enqueue_scripts', 'load_map_data');
