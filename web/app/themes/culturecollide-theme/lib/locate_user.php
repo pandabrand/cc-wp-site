@@ -1,7 +1,7 @@
 <?php
 
 function enqueue_scripts_styles_init() {
-  if( is_single() || is_tax( 'location_types' ) ):
+  if( is_single() || is_tax( 'location_types' ) || is_page( array(9972, 'travel') )):
     $args = array(
       "post_type" => "city",
       "numberposts" => -1,
