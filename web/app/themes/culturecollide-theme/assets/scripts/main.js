@@ -84,6 +84,7 @@
         $('.link_search-form_opener > a').click(function(e) {
           e.preventDefault();
           $('.search-form').slideToggle('slow');
+          e.stopPropagation();
         });
       },
       finalize: function() {
