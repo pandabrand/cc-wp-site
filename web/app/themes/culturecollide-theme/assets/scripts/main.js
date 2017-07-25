@@ -19,6 +19,17 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        $('.share-fb').click(function() {
+          event.preventDefault();
+          FB.ui({
+           method: 'share',
+           display: 'popup',
+           href: $(this).attr('href'),
+           }, function(response){
+             console.dir(response);
+           });
+        });
+
         $('.share-tb').click(function() {
           event.preventDefault();
           makepopup($(this));
@@ -40,51 +51,6 @@
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
-        window.twttr = (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0],
-            t = window.twttr || {};
-          if (d.getElementById(id)) {return t;}
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "https://platform.twitter.com/widgets.js";
-          fjs.parentNode.insertBefore(js, fjs);
-
-          t._e = [];
-          t.ready = function(f) {
-            t._e.push(f);
-          };
-
-          return t;
-        }(document, "script", "twitter-wjs"));
-
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId            : '199633970568255',
-            autoLogAppEvents : true,
-            xfbml            : true,
-            version          : 'v2.9'
-          });
-          FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement(s); js.id = id;
-           js.src = "//connect.facebook.net/en_US/sdk.js";
-           fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-
-         $('.share-fb').click(function() {
-           event.preventDefault();
-           FB.ui({
-            method: 'share',
-            display: 'popup',
-            href: $(this).attr('href'),
-            }, function(response){
-              console.dir(response);
-            });
-         });
       }
     },
     // Home page
