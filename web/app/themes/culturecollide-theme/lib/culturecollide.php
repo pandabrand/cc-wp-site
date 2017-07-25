@@ -214,6 +214,7 @@ function cc_category_archives( $query ) {
 }
 
 function cc_archive_title() {
+  $title = '';
     if ( is_category() ) {
         $title = single_cat_title( '', false );
     } elseif ( is_tag() ) {
