@@ -1,7 +1,6 @@
 <?php
 
 function enqueue_scripts_styles_init() {
-  if( is_post_type_archive( ['city', 'artist'] ) || is_single( ['city', 'artist'] ) || is_tax( 'location_types' ) ):
     $args = array(
       "post_type" => "city",
       "numberposts" => -1,
@@ -23,7 +22,6 @@ function enqueue_scripts_styles_init() {
     wp_enqueue_script('ajax-script');
 
   	wp_localize_script( 'ajax-script', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) ); // setting ajaxurl
-  endif;
 }
 add_action('init', 'enqueue_scripts_styles_init');
 

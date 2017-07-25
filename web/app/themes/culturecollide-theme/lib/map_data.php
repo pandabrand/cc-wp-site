@@ -3,8 +3,6 @@
 function load_map_data() {
   global $post;
   $json_locations = array('locations' => array());
-  // write_log($json_locations);
-  if( is_single() || is_tax( 'location_types' ) ) {
     if( is_single() && get_post_type($post->ID) == 'artist' ) {
       if( have_rows( 'artists_locations', $post->ID ) ) {
         while( have_rows( 'artists_locations', $post->ID ) ): the_row();
@@ -74,14 +72,11 @@ function load_map_data() {
           $json_locations['locations'][] = $location_output;
         }
         $first = get_field('location_city', $locations[0]->ID);
-        // write_log($first);
         $first_city = get_post($first[0]);
-        // write_log($first_city);
         $city = array(
           'title' => get_the_title($first_city->ID),
           'location' => get_field('city_location', $first_city->ID)
         );
-        // write_log($city);
         $json_locations['city'] = $city;
       }
     }
@@ -93,6 +88,5 @@ function load_map_data() {
     wp_register_script('map_js', get_template_directory_uri() . '/dist/scripts/map_data.js', array(), null, true);
     wp_localize_script( 'map_js', 'map_vars', $js_data );
     wp_enqueue_script('map_js');
-  }
 }
 add_action('wp_enqueue_scripts', 'load_map_data');
