@@ -95,75 +95,75 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
-        // $('.home__city-guides-block__carousel-block__list').slick({
-        //   infinite: true,
-        //   slidesToShow: 5,
-        //   slidesToScroll: 5,
-        //   responsive: [
-        //     {
-        //       breakpoint: 1025,
-        //       settings: {
-        //         arrows: true,
-        //         dots: false,
-        //         slidesToShow: 4,
-        //         centerMode: true,
-        //       }
-        //     },
-        //     {
-        //       breakpoint: 769,
-        //       settings: {
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 3,
-        //         centerMode: true,
-        //       }
-        //     },
-        //     {
-        //       breakpoint: 481,
-        //       settings: {
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 1,
-        //         centerMode: true,
-        //       }
-        //     }
-        //   ]
-        // });
-        //
-        // $('.related-content__carousel').slick({
-        //   infinite: true,
-        //   slidesToShow: 3,
-        //   slidesToScroll: 0,
-        //   dots: false,
-        //   arrows: false,
-        //   responsive: [
-        //     {
-        //       breakpoint: 1025,
-        //       settings: "noslick"
-        //     },
-        //     {
-        //       breakpoint: 769,
-        //       settings: {
-        //         infinite: true,
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 2,
-        //         slidesToScroll: 2,
-        //       }
-        //     },
-        //     {
-        //       breakpoint: 481,
-        //       settings: {
-        //         infinite: true,
-        //         arrows: false,
-        //         dots: true,
-        //         slidesToShow: 1,
-        //         slidesToScroll: 1,
-        //         centerMode: true,
-        //       }
-        //     }
-        //   ]
-        // });
+        $('.home__city-guides-block__carousel-block__list').slick({
+          infinite: true,
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          responsive: [
+            {
+              breakpoint: 1025,
+              settings: {
+                arrows: true,
+                dots: false,
+                slidesToShow: 4,
+                centerMode: true,
+              }
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                arrows: false,
+                dots: true,
+                slidesToShow: 3,
+                centerMode: true,
+              }
+            },
+            {
+              breakpoint: 481,
+              settings: {
+                arrows: false,
+                dots: true,
+                slidesToShow: 1,
+                centerMode: true,
+              }
+            }
+          ]
+        });
+
+        $('.related-content__carousel').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 0,
+          dots: false,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 1025,
+              settings: "noslick"
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                infinite: true,
+                arrows: false,
+                dots: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              }
+            },
+            {
+              breakpoint: 481,
+              settings: {
+                infinite: true,
+                arrows: false,
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                centerMode: true,
+              }
+            }
+          ]
+        });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
